@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSideNav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div fxHide.xs>
+    <a routerLink="/">تناسب اندام</a>
+  </div>
+  <div fxFlex></div>
+  <div>
+    <ul fxLayout fxLayoutGap="20px" class="navigation-items" fxHide.xs>
+      <li *ngIf="!(isAuth$ | async)">
+        <a
+          routerLink="/signup"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >ایجادحساب</a
+        >
+      </li>
+      <li *ngIf="!(isAuth$ | async)">
+        <a
+          routerLink="/signin"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >ورود</a
+        >
+      </li>
+      <li *ngIf="(isAuth$ | async)">
+        <a
+          routerLink="/training"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >تمرین</a
+        >
+      </li>
+      <li *ngIf="(isAuth$ | async)">
+        <a style="cursor: pointer" (click)="onLogout()">خروج</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

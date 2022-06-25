@@ -1,0 +1,33 @@
+<section class="formSection">
+  <form fxLayout="column" fxLayoutAlign="center center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div
+      fxLayoutGap="10px"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      formGroupName="userData"
+    >
+      <mat-form-field>
+        <input
+          formControlName="email"
+          matInput
+          placeholder="ایمیل"
+          type="email"
+        />
+        <mat-hint *ngIf="loginForm.get('userData.email')!.invalid">لطفا یک ایمیل معتبر وارد کنید</mat-hint>
+        <mat-error>ایمیل وارد شده معتبر نیست!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="password"
+          matInput
+          placeholder="رمز عبور"
+          type="password"
+        />
+        <mat-hint *ngIf="loginForm.get('userData.password')!.invalid">رمزعبور باید حداقل شامل 6 حرف یا عدد باشد.</mat-hint>
+      <mat-error>رمز عبور معتبر نیست.</mat-error>
+      </mat-form-field>
+      <button *ngIf="!(isLoading$ | async )" [disabled]="loginForm.invalid" fxFlexAlign="start" class="formBtn" mat-raised-button color="primary">ورود</button>
+    </div>
+    <mat-spinner *ngIf="(isLoading$ | async )"></mat-spinner>
+  </form>
+</section>

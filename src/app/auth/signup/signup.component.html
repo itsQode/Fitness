@@ -1,0 +1,52 @@
+<section>
+  <form
+    (ngSubmit)="onSubmit(f)"
+    #f="ngForm"
+    dir="rtl"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field>
+      <input
+        type="email"
+        ngModel
+        name="email"
+        matInput
+        required
+        email
+        placeholder="ایمیل"
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')">
+        وارد کردن ایمیل ضروری است !
+      </mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')"> ایمیل وارد شده نامعتبر است </mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="رمز عبور شما باید حداقل شامل 6 حرف یا عدد باشد">
+      <input
+        type="password"
+        ngModel
+        name="password"
+        matInput
+        required
+        minlength="6"
+        placeholder="رمزعبور"
+        #pwInput="ngModel"
+      />
+      <mat-hint align="end"> {{ pwInput.value?.length }} / 6 </mat-hint>
+      <mat-error>رمز عبور شما باید حداقل شامل 6 حرف یا عدد باشد</mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+      <input matInput placeholder="تاریخ تولد" [matDatepicker]="dtPicker" [max]="maxDate" ngModel name="birthdate" required>
+      <mat-datepicker-toggle matSuffix [for]="dtPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dtPicker></mat-datepicker>
+    </mat-form-field> -->
+
+    <mat-checkbox color="primary" ngModel name="agree" required>موافقت با قوانین سایت</mat-checkbox>
+
+    <button *ngIf="!(isLoading$ | async)" mat-raised-button color="primary" [disabled]="f.invalid">ثبت نام</button>
+    <mat-spinner *ngIf="(isLoading$ | async)"></mat-spinner>
+  </form>
+</section>

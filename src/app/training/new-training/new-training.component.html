@@ -1,0 +1,41 @@
+<section class="new-training" fxLayout="row" fxLayoutAlign="center">
+  <form (ngSubmit)="onStartTraining(form)" #form="ngForm">
+    <mat-card fxFlex.xs="80vw" fxFlex="400px">
+      <mat-card-title fxLayoutAlign="center">وقت ورزشِ!</mat-card-title>
+      <mat-card-content fxLayoutAlign="center">
+        <mat-form-field
+          *ngIf="!(isLoading$ | async) && (availableExercises$ | async)"
+        >
+          <mat-select placeholder="حرکت ورزشی" ngModel name="exercise" required>
+            <mat-option
+              *ngFor="let exercise of availableExercises$ | async"
+              [value]="exercise.name"
+            >
+              {{ exercise.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+      </mat-card-content>
+      <mat-card-actions *ngIf="!(isLoading$ | async)" fxLayoutAlign="center">
+        <button
+          *ngIf="availableExercises$ | async"
+          [disabled]="form.invalid"
+          type="submit"
+          mat-button
+        >
+          شروع
+        </button>
+        <button
+          *ngIf="!(availableExercises$ | async)"
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="onFetchExercises()"
+        >
+          تلاش مجدد
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</section>

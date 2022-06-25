@@ -1,0 +1,20 @@
+<mat-nav-list>
+  <a *ngIf="!(isAuth$ | async)" mat-list-item routerLink="/signup" (click)="onCloseSideNav()">
+    <mat-icon>face</mat-icon>
+    <span class="nav-caption">ایجادحساب</span>
+  </a>
+  <a *ngIf="!(isAuth$ | async)" mat-list-item routerLink="/signin" (click)="onCloseSideNav()">
+    <mat-icon>input</mat-icon>
+    <span class="nav-caption">ورود به حساب</span>
+  </a>
+  <a *ngIf="(isAuth$ | async)" mat-list-item routerLink="/training" (click)="onCloseSideNav()">
+    <mat-icon>fitness_center</mat-icon>
+    <span class="nav-caption">تمرین</span>
+  </a>
+  <mat-list-item *ngIf="(isAuth$ | async)">
+    <button mat-icon-button (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      <span class="nav-caption">خروج</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

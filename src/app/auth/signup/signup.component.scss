@@ -1,0 +1,10 @@
+input{
+  &[type=email],&[type=password]{
+    text-align: left;
+    direction: ltr;
+  }
+}
+
+mat-form-field{
+  width: 300px;
+}

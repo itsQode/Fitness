@@ -1,0 +1,61 @@
+<div>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      placeholder="فیلتر نتایج"
+      (keyup)="doFilterTableData($event)"
+    />
+  </mat-form-field>
+</div>
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef mat-sort-header="date"
+      >تاریخ</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{
+      element.date | datepersian
+    }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header="name"
+      >عنوان</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="duration">
+    <mat-header-cell *matHeaderCellDef mat-sort-header="duration"
+      >مدت زمان / ثانیه</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{
+      element.duration | number: "1.0-0"
+    }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="calories">
+    <mat-header-cell *matHeaderCellDef mat-sort-header="calories"
+      >کالری / کیلو</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{
+      element.calories | number: "1.0-2"
+    }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="state">
+    <mat-header-cell *matHeaderCellDef mat-sort-header="state"
+      >وضعیت</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element">{{ element.state }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
