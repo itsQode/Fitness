@@ -1,27 +1,34 @@
-# Fitness
+# FitBit
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.17.
+This project's main objective is to ease your tracking of your exercises
 
-## Development server
+## FrameWorks and Verions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Angular version 12.2.6
+- Angular Material version 12.2.13
+- Angular Flex-layout version 12.0.0-beta.35
+- Angular Fire version 6.0.3
+- NgRx store version 6.6.0
 
-## Code scaffolding
+## Data base
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+For storing and maneging Data i used CouldStorage provided by firebase
 
-## Build
+## Stata Manegment
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+For state Mangement i used Ngrx becasue of its deep integration with
+Angular
 
-## Running unit tests
+## Authentication
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+For authentication i used Angular fire authentication wich is maneged by
+Angula Fire Auth
 
-## Running end-to-end tests
+## Styling and ux
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+For styling and ux i used Angular Material combined with Angular Flex-layout
 
-## Further help
+## Get in touch
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+you can contact me trough my E-mail at : **itsQode@gmail.com**
+and my Telegram : **@iQode**
